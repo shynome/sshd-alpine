@@ -1,0 +1,31 @@
+{
+  "name": "sshd-alpine",
+  "version": "0.0.0",
+  "description": "docker sshd server on linux-alpine",
+  "private": true,
+  "main": "index.js",
+  "config": {
+    "image_name": "echo shynome/${npm_package_name}",
+    "image_version": "echo $(eval ${npm_package_config_image_name}):v${npm_package_version}",
+    "image_latest": "echo $(eval ${npm_package_config_image_name}):latest"
+  },
+  "scripts": {
+    "build": "sudo docker build . -t $(eval ${npm_package_config_image_version})",
+    "pretest": "npm run build",
+    "test": "mocha test",
+    "prerelease": "sudo docker tag $(eval ${npm_package_config_image_version}) $(eval ${npm_package_config_image_latest})",
+    "release": "sudo docker push $(eval ${npm_package_config_image_version}) $(eval ${npm_package_config_image_latest})",
+    "preversion": "npm run test",
+    "postversion": "npm run release"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.7",
+    "@types/shelljs": "^0.7.8",
+    "mocha": "^5.0.4",
+    "shelljs": "^0.8.1"
+  }
+}
