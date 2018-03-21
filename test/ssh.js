@@ -16,7 +16,7 @@ describe('sshd test',()=>{
   }
   
   before(async ()=>{
-    shell.exec(`sudo docker run --rm -d --name ${container_name} ${image_name}`)
+    shell.exec(`sudo docker run --rm -d --name ${container_name} -e pass='root' ${image_name}`)
     docker_run(`ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""`)
   })
   
