@@ -10,6 +10,10 @@
     "image_latest": "echo $(eval ${npm_package_config_image_name}):latest"
   },
   "scripts": {
+    "presshd": "npm run build",
+    "sshd": "sudo docker run --rm -ti -p 233:22 --name ${npm_package_name} $(eval ${npm_package_config_image_version})",
+    "stop": "sudo docker stop ${npm_package_name}",
+    "ssh": "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p 233 root@localhost",
     "build": "sudo docker build . -t $(eval ${npm_package_config_image_version})",
     "pretest": "npm run build",
     "test": "mocha test/ssh",

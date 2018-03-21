@@ -1,8 +1,6 @@
 #!/bin/sh
 
-if $user ; then
-  echo $user | chpasswd
-fi
+echo "$user" | chpasswd
 
 # generate host keys if not present
 ssh-keygen -A
