@@ -12,7 +12,7 @@
   "scripts": {
     "build": "sudo docker build . -t $(eval ${npm_package_config_image_version})",
     "pretest": "npm run build",
-    "test": "mocha test",
+    "test": "mocha test/ssh",
     "prerelease": "sudo docker tag $(eval ${npm_package_config_image_version}) $(eval ${npm_package_config_image_latest})",
     "release": "sudo docker push $(eval ${npm_package_config_image_version}) $(eval ${npm_package_config_image_latest})",
     "preversion": "npm run test",
