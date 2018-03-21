@@ -1,0 +1,8 @@
+#!/bin/bash
+image_tag_version=$(eval ${npm_package_config_image_version})
+image_tag_latest=$(eval ${npm_package_config_image_latest})
+image_tags=($image_tag_version $image_tag_latest)
+for image_tag in ${image_tags[@]}
+do
+  sudo docker push $image_tag
+done
