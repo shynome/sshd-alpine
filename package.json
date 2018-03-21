@@ -1,6 +1,6 @@
 {
   "name": "sshd-alpine",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "docker sshd server on linux-alpine",
   "private": true,
   "main": "index.js",
