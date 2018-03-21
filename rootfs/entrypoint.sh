@@ -1,6 +1,11 @@
 #!/bin/sh
 
-echo "$user" | chpasswd
+if [ ! $pass ] ; then
+  echo "environment required: \`pass\`  "
+  exit 1
+fi
+
+echo "root:${pass}" | chpasswd
 
 # generate host keys if not present
 ssh-keygen -A
